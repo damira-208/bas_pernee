@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAS PERNE - Домбыра</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --accent-color: #4dd0e1;
+            --gold: #ffd700;
+            --light-blue: #e3f2fd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--primary-color);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container1 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px ;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--accent-color), transparent);
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+
+
+
+
+        .container{
+        position: relative;
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        position: relative;
+        left: 100px;
+        color: black;
+     }   
+
+     .container .card{
+        position: relative;
+        height: 250px;
+        background: white;
+        display: flex;
+        width: 45%;
+        margin: 30px 0;
+     }
+
+     .container .card .imgBx{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:  #FFD700;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: 0.5s ease-in-out;
+     }
+
+    .container .card:hover .imgBx{
+        width: 150px;
+        height: 150px;
+        left: -75px;
+        top: calc(50% - 75px);
+        transition: 0.5s ease-in-out;
+        background: #FFB800 ;
+    }
+
+    .container .card .imgBx::before{
+        content: attr(data-text);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 6em;
+        color: rgba(255,255,255,.05);
+        font-weight: 700;
+    }
+
+    .container .card .imgBx img{
+        max-width: 100px;
+        transition: 0.5s ease-in-out;
+    }
+
+    .container .card:hover .imgBx img{
+        max-width: 75px;
+    }
+    
+    .container .card .content{
+        position: absolute;
+        right: 0;
+        width: calc(100% - 75%);
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .container .card .content h3{
+        margin-bottom: 1px;
+        font-size: 24px;
+        position: relative;
+        top: -90px;
+        left: -120px;
+    }
+    
+    .container .card .content p{
+        display: inline; 
+        white-space: nowrap; 
+        position: relative;
+        left: -150px;
+    }
+     .imgBx img{
+        width: 200px;
+        height: auto;
+        object-fit: cover;
+     }
+
+
+        .book {
+            perspective: 1500px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        .page {
+            background: linear-gradient(135deg, var(--light-blue), white);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            transform-origin: left;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page:hover {
+            transform: rotateY(-15deg) translateZ(50px);
+            box-shadow: 20px 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+
+        .dombyra-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .dombyra-image {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .dombyra-container:hover .dombyra-image {
+            transform: scale(1.05);
+        }
+
+        .more-info-btn {
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .more-info-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .more-info-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(77,208,225,0.4);
+        }
+
+        .more-info-btn:hover::before {
+            left: 100%;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-list li {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-list li:hover {
+            transform: translateX(10px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.2);
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: footerLine 3s linear infinite;
+        }
+
+        @keyframes footerLine {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page {
+                padding: 20px;
+            }
+            .container {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            left: 10px;
+            font-size: 10px;
+        }
+
+        .main{
+            position: relative;
+            left: -180px;
+        }
+        .container .card{
+            width: 300px;
+            height: 200px;
+        }
+        .content {
+        text-align: center;
+        line-height: 20px;
+        position: relative;
+        left: 280px;
+        }
+       .container .card h3{
+         display: none;
+       }
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <header>
+            <h1>BAS PERNE</h1>
+            <p>Қазақтың дәстүрлі домбырасы</p>
+        </header>
+
+
+        <div class="container">
+            <div class="card">
+                <div class="imgBx" data-text="Why?">
+                    <img src="./buying.png" alt="">
+                </div>
+                <div class="content">
+                     <h3>Why?</h3>
+                     <p> BAS PERNE  бренді <br>қазақ мұрасын қайта жаңғыртып,<br> дәстүрлі аспаптардың <br>ерекше мәнін сақтайды.</p>
+                </div>
+            </div>
+        
+            <div class="card">
+                <div class="imgBx" data-text="Choose">
+                    <img src="./choose-person.png" alt="">
+                </div>
+                <div class="content">
+                     <h3>Choose</h3>
+                     <p> BAS PERNE бренді өз<br> сапасымен және шынайы қазақы <br>рухымен сенімді таңдау <br>болып табылады.</p>
+                </div>
+            </div>
+        
+            <div class="card">
+                <div class="imgBx" data-text="Product">
+                    <img src="./ask.png" alt="">
+                </div>
+                <div class="content">
+                     <h3>Product</h3>
+                     <p>BAS PERNE бренді<br> дәстүрлі аспаптар нарығында<br> жоғары сұранысқа ие</p>
+                </div>
+            </div>
+        
+        
+            <div class="card">
+                <div class="imgBx" data-text="kazakh">
+                    <img src="./man.png" alt="">
+                </div>
+                <div class="content">
+                     <h3>Kazakh</h3>
+                     <p>Бұл өнім қазақ халқы үшін <br>аса маңызды, себебі ол ұлттық<br> мұраны сақтап, келесі<br> ұрпаққа жеткізеді.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="book">
+            <div class="page">
+                <div class="dombyra-container">
+                    <!-- Мұнда өз суретіңізді қоюға болады -->
+                    <img src="./5418119502266231969.jpg" alt="Домбыра" class="dombyra-image">
+                </div>
+                <h2>Біздің домбыралар</h2>
+                <p>Бас Перне компаниясы - қолдан жасалған ең сапалы домбыраларды ұсынады. Әрбір домбыра шебердің қолынан шыққан бірегей туынды.</p>
+                <a href="https://wa.me/77055862702" class="more-info-btn">
+                    Көбірек білгім келеді
+                </a>
+            </div>
+        </div>
+
+        <div class="book">
+            <div class="page">
+                <h2>Біздің қызметтеріміз</h2>
+                <p>Біз тек домбыра жасап қана қоймай, сонымен қатар:</p>
+                <ul class="service-list">
+                    <li>🎵 Домбыра жөндеу және күйге келтіру</li>
+                    <li>💫 Кәсіби кеңес беру</li>
+                    <li>🎨 Жеке тапсырыс бойынша жасау</li>
+                    
+                </ul>
+                <p>Біздің компания сіздерге сапалы қызмет көрсетуге дайын. Біздің тәжірибеміз бен біліктілігімізге сенім артуыңызға болады.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 BAS PERNE</p>
+            <p>Барлық құқықтар қорғалған</p>
+        </footer>
+    </div>
+</body>
+</html>
